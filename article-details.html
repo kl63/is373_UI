@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article Details</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="logo">SportsBlog</div>
+    <nav class="navbar">
+      <a href="./index.html">Home</a>
+      <a href="./articles.html">Blog</a>
+      <a href="#">Categories</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Article Details Section -->
+  <main class="article-details">
+    <h1 id="article-title">Loading...</h1>
+    <p id="article-date"></p>
+    <div id="article-body">Please wait while we fetch the article details.</div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="quick-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+    <div class="newsletter">
+      <input type="email" placeholder="Your email">
+      <button>Subscribe</button>
+    </div>
+    <div class="social-icons">
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+
+  <!-- JavaScript to Fetch Article Details -->
+  <script>
+    async function fetchArticleDetails() {
+      const params = new URLSearchParams(window.location.search);
+      const articleId = params.get('id');
+
+      if (!articleId) {
+        document.getElementById('article-title').innerText = 'Article Not Found';
+        document.getElementById('article-body').innerText = 'No article ID provided.';
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://api.sportify2024.me/jsonapi/node/article/${articleId}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const article = data.data.attributes;
+
+        document.getElementById('article-title').innerText = article.title;
+        document.getElementById('article-date').innerText = `Published on: ${new Date(article.created).toLocaleString()}`;
+        document.getElementById('article-body').innerHTML = article.body.processed;
+      } catch (error) {
+        console.error('Error fetching article details:', error);
+        document.getElementById('article-title').innerText = 'Error';
+        document.getElementById('article-body').innerText = 'Unable to fetch article details.';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchArticleDetails);
+  </script>
+</body>
+</html>

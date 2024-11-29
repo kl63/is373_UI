@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Articles - Sports Blog</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="logo">SportsBlog</div>
+    <nav class="navbar">
+      <a href="./index.html">Home</a>
+      <a href="./articles.html">Blog</a>
+      <a href="#">Categories</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="search-bar">
+      <input type="text" id="search-bar" placeholder="Search articles...">
+      <button onclick="filterArticles()">Search</button>
+    </div>
+  </header>
+
+  <!-- Articles Section -->
+  <section class="articles">
+    <h1>All Articles</h1>
+    <div id="all-articles-container" class="articles-grid"></div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="quick-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+    <div class="newsletter">
+      <input type="email" placeholder="Your email">
+      <button>Subscribe</button>
+    </div>
+    <div class="social-icons">
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+
+  <!-- JavaScript to Fetch and Display Articles -->
+  <script>
+    async function fetchAndDisplayAllArticles() {
+      try {
+        const response = await fetch('http://api.sportify2024.me/jsonapi/node/article');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const articlesContainer = document.getElementById('all-articles-container');
+
+        // Display all articles
+        data.data.forEach(article => {
+          const articleDiv = document.createElement('div');
+          articleDiv.classList.add('article-card');
+
+          const title = article.attributes.title;
+          const excerpt = article.attributes.body.processed.slice(0, 200) + '...'; // Shortened body
+          const createdDate = new Date(article.attributes.created).toLocaleString();
+          const articleId = article.id;
+
+          articleDiv.innerHTML = `
+            <h3>${title}</h3>
+            <p><strong>Published:</strong> ${createdDate}</p>
+            <div>${excerpt}</div>
+            <a href="./article-details.html?id=${articleId}" class="read-more-link">Read More</a>
+          `;
+
+          articlesContainer.appendChild(articleDiv);
+        });
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      }
+    }
+
+    // Optional: Filter articles by title
+    function filterArticles() {
+      const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+      const articles = document.querySelectorAll('.article-card');
+      articles.forEach(article => {
+        const title = article.querySelector('h3').innerText.toLowerCase();
+        if (title.includes(searchTerm)) {
+          article.style.display = 'block';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchAndDisplayAllArticles);
+  </script>
+</body>
+</html>
