@@ -118,7 +118,7 @@
   <script>
     async function fetchAndDisplayArticles() {
       try {
-        const response = await fetch('http://api.sportify2024.me/jsonapi/node/article');
+        const response = await fetch('https://api.sportify2024.me/jsonapi/node/article');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
