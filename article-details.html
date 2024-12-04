@@ -56,7 +56,7 @@
       }
 
       try {
-        const response = await fetch(`http://api.sportify2024.me/jsonapi/node/article/${articleId}`);
+        const response = await fetch(`https://api.sportify2024.me/jsonapi/node/article/${articleId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
