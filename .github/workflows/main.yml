@@ -20,4 +20,5 @@ jobs:
         with:
           branch: gh-pages  # The branch where the site will be deployed
           folder: ./  # The folder containing your HTML files (./ for root)
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}  # Ensure this token is available
+          commit_message: 'Deploying to gh-pages from GitHub Actions'
