@@ -18,8 +18,8 @@ jobs:
           curl https://api.sportify2024.me/jsonapi/node/article > articles.json
           # Process articles.json and create static HTML content for each article
 
-      - name: Push to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.1.0
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4  # Corrected version
         with:
           branch: gh-pages
           folder: /path/to/generated/static-content  # Path to generated static files
