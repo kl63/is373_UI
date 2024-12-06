@@ -3,24 +3,35 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Trigger when changes are made to the main branch
+      - main  # Trigger deployment on push to the main branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout the repository
+      # Checkout the repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch articles from the API and build static content
+      # Install dependencies and build your site (adjust this according to your build process)
+      - name: Install dependencies
         run: |
-          curl https://api.sportify2024.me/jsonapi/node/article > articles.json
-          # Process articles.json and create static HTML content for each article
+          npm install  # or any other command to install dependencies for your build tool
 
+      # Run your build process (adjust according to your setup)
+      - name: Build the site
+        run: |
+          npm run build  # or any other build command to generate static files
+
+      # List files in the build folder to check if the build was successful
+      - name: List generated files
+        run: ls -R ./public  # or your build directory
+
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4  # Corrected version
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
-          folder: /path/to/generated/static-content  # Path to generated static files
-          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages  # Deploy to the gh-pages branch
+          folder: ./public  # Folder where the static files are located
+          token: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
