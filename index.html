@@ -4,27 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sports Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
   <!-- Header Section -->
   <header class="header">
-    <div class="logo">SportsBlog</div>
+    
     <nav class="navbar">
+      <div class="logo">Sportify</div>
       <a href="./index.html">Home</a>
       <a href="./articles.html">Blog</a>
       <a href="#">Categories</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
+    
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." >
+      </div>
     </nav>
-    <div class="search-bar">
-      <input type="text" placeholder="Search...">
-    </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <img src="./images/hero.jpg" alt="Hero Image" class="hero-image">
+    <!-- <img src="./images/hero.jpg" alt="Hero Image" class="hero-image"> -->
     <div class="hero-content">
       <h1>Unleash Your Passion for Sports!</h1>
       <p>Stay updated with the latest sports stories, insights, and trends from fans just like you.</p>
@@ -33,11 +36,12 @@
         <button>Start Your Blog</button>
       </div>
     </div>
+    <img src="./assets/hero-right-image.png" alt="Hero Image" class="hero-image">
   </section>
 
   <!-- Featured Blogs Section -->
   <section class="featured-blogs">
-    <h2>Trending Stories in Sports</h2>
+    <h1>Trending Stories in Sports</h1>
     <div class="blogs-grid">
       <div class="blog-card">
         <img src="./images/blog 1.jpg" alt="Football Player Scoring">
@@ -66,7 +70,7 @@
     </div>
   </section>
 
-  <!-- Dynamic Articles Section -->
+  <!-- Dynamic Articles Section
   <section class="dynamic-articles">
     <h2>Latest Articles</h2>
     <div id="articles-container"></div>
@@ -74,7 +78,7 @@
       <a href="./articles.html" class="view-more-link">View All Articles</a>
     </div>
   </section>
-
+  -->
   <!-- Categories Section -->
   <section class="categories">
     <h2>Explore by Sport</h2>
