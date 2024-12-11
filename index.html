@@ -17,8 +17,7 @@
       <a href="./articles.html">Blog</a>
       <a href="#">Categories</a>
       <a href="#">About</a>
-      <a href="#">Contact</a>
-    
+      <a href="#">Sign In</a>
       <div class="search-bar">
         <input type="text" placeholder="Search..." >
       </div>
@@ -42,31 +41,9 @@
   <!-- Featured Blogs Section -->
   <section class="featured-blogs">
     <h1>Trending Stories in Sports</h1>
-    <div class="blogs-grid">
-      <div class="blog-card">
-        <img src="./images/blog 1.jpg" alt="Football Player Scoring">
-        <div class="blog-card-content">
-          <h3>Football Star's Stunning Play</h3>
-          <p>A memorable touchdown that captivated fans...</p>
-          <a href="#">Read More</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <img src="./images/blog 2.jpg" alt="Basketball Dunk">
-        <div class="blog-card-content">
-          <h3>Basketball Dunk of the Year</h3>
-          <p>Highlights from an epic slam dunk...</p>
-          <a href="#">Read More</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <img src="./images/blog 3.jpg" alt="Soccer Bicycle Kick">
-        <div class="blog-card-content">
-          <h3>Soccer's Bicycle Kick Masterpiece</h3>
-          <p>A spectacular goal that redefined skills...</p>
-          <a href="#">Read More</a>
-        </div>
-      </div>
+    <div class="blogs-grid" id="featured-blogs-container">
+      <!-- Dynamic content will be inserted here -->
+      
     </div>
   </section>
 
@@ -128,26 +105,30 @@
         }
 
         const data = await response.json();
-        const articlesContainer = document.getElementById('articles-container');
+        const featuredBlogsContainer = document.getElementById('featured-blogs-container');
 
         // Display the latest 3 articles dynamically
         data.data.slice(0, 3).forEach(article => {
-          const articleDiv = document.createElement('div');
-          articleDiv.classList.add('article');
+          const blogCard = document.createElement('div');
+          blogCard.classList.add('blog-card');
 
           const title = article.attributes.title;
-          const excerpt = article.attributes.body.processed.slice(0, 150) + '...'; // Shortened body
-          const createdDate = new Date(article.attributes.created).toLocaleString();
-          const articleId = article.id; // Article unique ID
+          const excerpt = article.attributes.body.processed.slice(0, 100) + '...'; // Shortened body
+          const articleId = article.id;
 
-          articleDiv.innerHTML = `
-            <h3>${title}</h3>
-            <p><strong>Published:</strong> ${createdDate}</p>
-            <div>${excerpt}</div>
-            <a href="./article-details.html?id=${articleId}" class="read-more-link">Read More</a>
+          // You might need to adjust the image path based on your Drupal setup
+          const imageUrl = article.attributes.field_image?.uri?.url || './images/default-blog.jpg';
+
+          blogCard.innerHTML = `
+            <img src="${imageUrl}" alt="${title}">
+            <div class="blog-card-content">
+              <h3>${title}</h3>
+              <p>${excerpt}</p>
+              <a href="./article-details.html?id=${articleId}">Read More</a>
+            </div>
           `;
 
-          articlesContainer.appendChild(articleDiv);
+          featuredBlogsContainer.appendChild(blogCard);
         });
       } catch (error) {
         console.error('Error fetching articles:', error);
