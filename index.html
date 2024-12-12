@@ -15,12 +15,8 @@
       <div class="logo">Sportify</div>
       <a href="./index.html">Home</a>
       <a href="./articles.html">Blog</a>
-      <a href="#">Categories</a>
-      <a href="#">About</a>
-      <a href="#">Sign In</a>
-      <div class="search-bar">
-        <input type="text" placeholder="Search..." >
-      </div>
+      <a href="https://api.sportify2024.me/">Sign In</a>
+      
     </nav>
   </header>
 
@@ -32,7 +28,8 @@
       <p>Stay updated with the latest sports stories, insights, and trends from fans just like you.</p>
       <div class="hero-buttons">
         <button onclick="window.location.href='./articles.html'">Read Latest Posts</button>
-        <button>Start Your Blog</button>
+        <button onclick="window.location.href='https://api.sportify2024.me/'">Start Your Blog</button>
+
       </div>
     </div>
     <img src="./assets/hero-right-image.png" alt="Hero Image" class="hero-image">
@@ -120,7 +117,7 @@
           const imageUrl = article.attributes.field_image?.uri?.url || './images/default-blog.jpg';
 
           blogCard.innerHTML = `
-            <img src="${imageUrl}" alt="${title}">
+            
             <div class="blog-card-content">
               <h3>${title}</h3>
               <p>${excerpt}</p>

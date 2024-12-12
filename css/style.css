@@ -309,7 +309,7 @@ body {
     text-decoration: none;
 }
 
-/* Dynamic Articles Section */
+/* Dynamic Articles Section 
 .dynamic-articles {
     padding: 40px 20px;
     background-color: #f9f9f9;
@@ -362,3 +362,80 @@ body {
     line-height: 1.6;
     text-align: left;
 }
+*/
+
+
+/* Articles Section */
+.articles {
+    padding: 40px 20px;
+    background-color: black;
+    text-align: center;
+}
+
+#all-articles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid layout */
+    gap: 20px; /* Adds space between the grid items */
+    justify-items: center;
+    padding-top: 2em;
+}
+
+
+
+
+
+
+
+
+
+
+/* Article Body Styling */
+#article-body {
+    font-family: 'Arial', sans-serif; /* Font family for body text */
+    font-size: 1.1rem; /* Slightly larger text for readability */
+    line-height: 1.8; /* Line spacing for better readability */
+    color: #333; /* Dark text color for contrast */
+    margin-top: 20px; /* Add some spacing above the article body */
+    padding: 20px; /* Padding inside the article body */
+    background-color: #f9f9f9; /* Light gray background for the article */
+    border-radius: 8px; /* Rounded corners for the article body */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a clean look */
+    max-width: 1000px; /* Limit the width to avoid overly wide text */
+    margin-left: auto; /* Center the article body horizontally */
+    margin-right: auto; /* Center the article body horizontally */
+  }
+  
+  #article-body p {
+    margin-bottom: 15px; /* Space between paragraphs */
+  }
+  
+  #article-body img {
+    max-width: 100%; /* Make images responsive */
+    height: auto; /* Keep aspect ratio intact */
+    border-radius: 4px; /* Optional: rounded corners for images */
+    margin-top: 20px; /* Add some spacing above images */
+    display: block; /* Make the images block-level elements */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #article-body h2,
+  #article-body h3 {
+    color: #2c3e50; /* Darker color for subheadings */
+    font-weight: bold; /* Make headings stand out */
+  }
+  
+  #article-body ul,
+  #article-body ol {
+    margin-left: 20px; /* Add some space to the left for lists */
+  }
+  
+  #article-body a {
+    color: #3498db; /* Blue color for links */
+    text-decoration: none; /* Remove underline from links */
+  }
+  
+  #article-body a:hover {
+    text-decoration: underline; /* Underline links on hover for better interactivity */
+  }
+  

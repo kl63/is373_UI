@@ -9,20 +9,28 @@
 <body>
   <!-- Header Section -->
   <header class="header">
-    <div class="logo">SportsBlog</div>
     <nav class="navbar">
+      <div class="logo">Sportify</div>
       <a href="./index.html">Home</a>
       <a href="./articles.html">Blog</a>
-      <a href="#">Categories</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="https://api.sportify2024.me/">Sign In</a>
     </nav>
   </header>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 id="article-title">Loading...</h1>
+    </div>
+    <img src="./assets/hero-right-image.png" alt="Hero Image" class="hero-image">
+  </section>
+
   <!-- Article Details Section -->
   <main class="article-details">
-    <h1 id="article-title">Loading...</h1>
-    <p id="article-date"></p>
+    <div class="article-header">
+      
+      <p id="article-date">Loading date...</p>
+    </div>
     <div id="article-body">Please wait while we fetch the article details.</div>
   </main>
 
@@ -65,6 +73,7 @@
         const article = data.data.attributes;
 
         document.getElementById('article-title').innerText = article.title;
+        
         document.getElementById('article-date').innerText = `Published on: ${new Date(article.created).toLocaleString()}`;
         document.getElementById('article-body').innerHTML = article.body.processed;
       } catch (error) {
