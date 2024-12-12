@@ -4,29 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Articles - Sports Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
   <!-- Header Section -->
   <header class="header">
-    <div class="logo">SportsBlog</div>
     <nav class="navbar">
+      <div class="logo">Sportify</div>
       <a href="./index.html">Home</a>
       <a href="./articles.html">Blog</a>
-      <a href="#">Categories</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="https://api.sportify2024.me/">Sign In</a>
     </nav>
-    <div class="search-bar">
-      <input type="text" id="search-bar" placeholder="Search articles...">
-      <button onclick="filterArticles()">Search</button>
-    </div>
   </header>
+
+  <!-- Hero Section (Optional) -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>All Sports Articles</h1>
+      <p>Explore a wide range of sports articles from our community.</p>
+    </div>
+    <img src="./assets/hero-right-image.png" alt="Hero Image" class="hero-image">
+  </section>
 
   <!-- Articles Section -->
   <section class="articles">
-    <h1>All Articles</h1>
-    <div id="all-articles-container" class="articles-grid"></div>
+    <div id="all-articles-container" class="blogs-grid">
+      <!-- Dynamic content will be inserted here -->
+    </div>
   </section>
 
   <!-- Footer Section -->
@@ -61,7 +66,7 @@
         // Display all articles
         data.data.forEach(article => {
           const articleDiv = document.createElement('div');
-          articleDiv.classList.add('article-card');
+          articleDiv.classList.add('blog-card');  <!-- Matching the class name for card -->
 
           const title = article.attributes.title;
           const excerpt = article.attributes.body.processed.slice(0, 200) + '...'; // Shortened body
@@ -69,10 +74,12 @@
           const articleId = article.id;
 
           articleDiv.innerHTML = `
-            <h3>${title}</h3>
-            <p><strong>Published:</strong> ${createdDate}</p>
-            <div>${excerpt}</div>
-            <a href="./article-details.html?id=${articleId}" class="read-more-link">Read More</a>
+            <div class="blog-card-content">
+              <h3>${title}</h3>
+              <p><strong>Published:</strong> ${createdDate}</p>
+              <div>${excerpt}</div>
+              <a href="./article-details.html?id=${articleId}" class="read-more-link">Read More</a>
+            </div>
           `;
 
           articlesContainer.appendChild(articleDiv);
@@ -80,20 +87,6 @@
       } catch (error) {
         console.error('Error fetching articles:', error);
       }
-    }
-
-    // Optional: Filter articles by title
-    function filterArticles() {
-      const searchTerm = document.getElementById('search-bar').value.toLowerCase();
-      const articles = document.querySelectorAll('.article-card');
-      articles.forEach(article => {
-        const title = article.querySelector('h3').innerText.toLowerCase();
-        if (title.includes(searchTerm)) {
-          article.style.display = 'block';
-        } else {
-          article.style.display = 'none';
-        }
-      });
     }
 
     document.addEventListener('DOMContentLoaded', fetchAndDisplayAllArticles);
