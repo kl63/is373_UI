@@ -19,17 +19,17 @@
   </header>
 
   <!-- Hero Section (Optional) -->
-  <section class="hero">
-    <div class="hero-content">
+  <section class="articles-hero">
+    <div class="articles-hero-content">
       <h1>All Sports Articles</h1>
       <p>Explore a wide range of sports articles from our community.</p>
     </div>
-    <img src="./assets/hero-right-image.png" alt="Hero Image" class="hero-image">
+    <img src="./assets/articles-page-img.png" alt="Hero Image" class="articles-image">
   </section>
 
   <!-- Articles Section -->
   <section class="articles">
-    <div id="all-articles-container" class="blogs-grid">
+    <div id="all-articles-container" class="articles-grid">
       <!-- Dynamic content will be inserted here -->
     </div>
   </section>
@@ -66,18 +66,18 @@
         // Display all articles
         data.data.forEach(article => {
           const articleDiv = document.createElement('div');
-          articleDiv.classList.add('blog-card');  <!-- Matching the class name for card -->
+          articleDiv.classList.add('blog-card');
 
           const title = article.attributes.title;
-          const excerpt = article.attributes.body.processed.slice(0, 200) + '...'; // Shortened body
-          const createdDate = new Date(article.attributes.created).toLocaleString();
+          const excerpt = article.attributes.body.processed.slice(0, 170) + '...'; // Shortened body
+          const createdDate = new Date(article.attributes.created).toLocaleDateString();
           const articleId = article.id;
 
           articleDiv.innerHTML = `
             <div class="blog-card-content">
-              <h3>${title}</h3>
+              <h1>${title}</h1>
               <p><strong>Published:</strong> ${createdDate}</p>
-              <div>${excerpt}</div>
+              <div class="excerpt">${excerpt}</div>
               <a href="./article-details.html?id=${articleId}" class="read-more-link">Read More</a>
             </div>
           `;
@@ -88,7 +88,6 @@
         console.error('Error fetching articles:', error);
       }
     }
-
     document.addEventListener('DOMContentLoaded', fetchAndDisplayAllArticles);
   </script>
 </body>
