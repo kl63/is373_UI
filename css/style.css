@@ -675,3 +675,22 @@ body {
       max-width: 500px;
     }
   }
+  .featured-blogs {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #000;
+    color: white;
+}
+
+.section-header {
+    color: #015F00;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    margin-bottom: 60px;
+    font-weight: bold;
+}
