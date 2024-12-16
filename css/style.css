@@ -563,3 +563,75 @@ body {
     text-decoration: underline; /* Underline links on hover for better interactivity */
   }
   
+  /* Social Proof Section */
+.social-proof {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #000;
+    color: white;
+  }
+  
+  .testimonials-header {
+    color: #015F00;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  
+  .testimonials-title {
+    font-size: 3.5rem;
+    margin-bottom: 60px;
+    font-weight: bold;
+  }
+  
+  .testimonials-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .testimonial-card {
+    flex: 1;
+    max-width: 350px;
+    padding: 30px;
+    background: rgba(217, 217, 217, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 17px;
+    text-align: center;
+  }
+  
+  .testimonial-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+  }
+  
+  .testimonial-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .testimonial-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 968px) {
+    .testimonials-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .testimonial-card {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
