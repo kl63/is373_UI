@@ -18,19 +18,15 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
+  <section class="single-article-hero">
+    <div class="single-article-hero-content">
       <h1 id="article-title">Loading...</h1>
+      <p id="article-date">Loading date...</p>
     </div>
-    <img src="./assets/hero-right-image.png" alt="Hero Image" class="hero-image">
   </section>
 
   <!-- Article Details Section -->
   <main class="article-details">
-    <div class="article-header">
-      
-      <p id="article-date">Loading date...</p>
-    </div>
     <div id="article-body">Please wait while we fetch the article details.</div>
   </main>
 
@@ -68,14 +64,14 @@
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
+        
         const data = await response.json();
         const article = data.data.attributes;
 
         document.getElementById('article-title').innerText = article.title;
-        
-        document.getElementById('article-date').innerText = `Published on: ${new Date(article.created).toLocaleString()}`;
+        document.getElementById('article-date').innerText = `Published on: ${new Date(article.created).toLocaleDateString()}`;
         document.getElementById('article-body').innerHTML = article.body.processed;
+
       } catch (error) {
         console.error('Error fetching article details:', error);
         document.getElementById('article-title').innerText = 'Error';
