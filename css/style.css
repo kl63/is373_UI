@@ -4,6 +4,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
+    background-color: #000000;
 }
 
 /* Header Section */
@@ -113,6 +114,32 @@ body {
     
 }
 
+.single-article-hero{
+    position: relative;
+    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background: linear-gradient(180deg, #015F00 0%, #000 100%);
+
+    padding-top: 6em;
+    padding-left: 12em;
+    padding-right: 12em;
+    padding-bottom: 0;
+}
+
+.single-article-hero-content{
+    width: 100%;
+    z-index: 1;
+    text-align: left;
+}
+
+.single-article-hero-content h1{
+    font-size: 36px;
+    margin-bottom: 20px;
+}
 .articles-hero-content{
     width: 45%;
     z-index: 1;
@@ -165,6 +192,7 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 
 .hero-buttons button:hover {
     background-color: #004d00;
@@ -446,18 +474,27 @@ body {
 /* Article Body Styling */
 #article-body {
     font-family: 'Arial', sans-serif; /* Font family for body text */
-    font-size: 1.1rem; /* Slightly larger text for readability */
+    font-size: 1rem; /* Slightly larger text for readability */
     line-height: 1.8; /* Line spacing for better readability */
     color: #333; /* Dark text color for contrast */
-    margin-top: 20px; /* Add some spacing above the article body */
-    padding: 20px; /* Padding inside the article body */
-    background-color: #f9f9f9; /* Light gray background for the article */
-    border-radius: 8px; /* Rounded corners for the article body */
+    
+    margin-top: 7px; /* Add some spacing above the article body */
+    margin-bottom: 34px;
+    padding-top: 4em;
+    padding-left: 10em;
+    padding-right: 10em;
+    padding-bottom: 4em;
+    
+    background: rgba(217, 217, 217, 0.25); /* Light gray background for the article */
+    color: white;
+    border-radius: 25px; /* Rounded corners for the article body */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a clean look */
-    max-width: 1000px; /* Limit the width to avoid overly wide text */
+    max-width: 70em; /* Limit the width to avoid overly wide text */
     margin-left: auto; /* Center the article body horizontally */
     margin-right: auto; /* Center the article body horizontally */
+    border: 1px solid rgba(255, 255, 255, 0.20);
   }
+  
   
   #article-body p {
     margin-bottom: 15px; /* Space between paragraphs */
@@ -475,7 +512,7 @@ body {
   
   #article-body h2,
   #article-body h3 {
-    color: #2c3e50; /* Darker color for subheadings */
+    color: #ffffff; /* Darker color for subheadings */
     font-weight: bold; /* Make headings stand out */
   }
   
